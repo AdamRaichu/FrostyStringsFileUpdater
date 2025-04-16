@@ -24,7 +24,7 @@ namespace StringsFileUpdater
 
         public override Action<ILogger> Action => taskLogger =>
         {
-            webClient.Headers.Add(HttpRequestHeader.UserAgent, $"FrostyEditor/1.0.6.3 (version uncertain) StringsFileUpdater/0.0.0.1 (alpha testing version; contact at GitHub @ AdamRaichu with concerns)");
+            webClient.Headers.Add(HttpRequestHeader.UserAgent, $"FrostyEditor/1.0.6.3 (version uncertain) StringsFileUpdater/1.0.0.0 (contact at GitHub @ AdamRaichu with concerns)");
 
             bool updateCheck = Config.Get<bool>("SFU.updateCheck", false);
             if (!updateCheck)
