@@ -24,6 +24,6 @@ using StringsFileUpdater;
 
 [assembly: PluginDisplayName("Strings File Update Checker")]
 [assembly: PluginAuthor("AdamRaichu")]
-[assembly: PluginVersion("1.0.0.0")]
+[assembly: PluginVersion("1.0.1.0")]
 [assembly: RegisterStartupAction(typeof(StringsFileUpdateCheckerAction))]
 [assembly: RegisterOptionsExtension(typeof(StringsFileUpdaterConfig))]

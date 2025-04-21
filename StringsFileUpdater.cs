@@ -22,7 +22,22 @@ namespace StringsFileUpdater
     {
         WebClient webClient = new WebClient();
 
-        public override Action<ILogger> Action => taskLogger =>
+        public override Action<ILogger> Action => logger =>
+        {
+            System.Threading.Tasks.Task.Run(() =>
+            {
+                try
+                {
+                    runAction(logger);
+                }
+                catch (Exception ex)
+                {
+                    logger.Log("An error occurred while checking for update to strings.txt. Skipping...");
+                }
+            });
+        };
+
+        private void runAction(ILogger taskLogger)
         {
             webClient.Headers.Add(HttpRequestHeader.UserAgent, $"FrostyEditor/1.0.6.3 (version uncertain) StringsFileUpdater/1.0.0.0 (contact at GitHub @ AdamRaichu with concerns)");
 
@@ -71,7 +86,7 @@ namespace StringsFileUpdater
             {
                 taskLogger.Log("No new version of strings.txt is available.");
             }
-        };
+        }
 
         public List<PartialCommitDetails> readApi(string apiPath)
         {
